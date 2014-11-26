@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Free</title>
+</head>
+
+<body>
+
+<h1 align="center"><u>Free-text and phrase queries</u></h1>
+<h2>Free-text queries</h2>
+<p>With free-text queries, you can enter a group of words or a complete
+sentence. Indexing Service finds pages that best match the words and phrases in
+the free-text query. It does this by finding pages that match the meaning,
+rather than the exact wording, of the query. Indexing Service ignores Boolean,
+proximity, and wildcard operators.</p>
+<p>You can use free-text queries to search both contents and property values. If
+you submit only the query text without specifying the type of query or the
+property, Indexing Service uses the free-text query and the <b>Contents</b>
+property by default.</p>
+<p>The following queries return documents that contain text that most nearly
+matches the phrase, &quot;How do I print in Microsoft Excel?&quot;</p>
+<table>
+  <tbody>
+    <tr>
+      <th bgcolor="#000080"><font color="#FFFFFF">Long form</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Short form</font></th>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">{freetext} {prop name=contents} How do I print in Microsoft Excel?</td>
+      <td bgcolor="#EAEAEA">How do I print in Microsoft Excel?
+        <p>Or</p>
+        <p>$contents How do I print in Microsoft Excel</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Phrase queries</h2>
+<p>To search for a phrase, either enclose it in quotation marks or precede it
+with the <b>{phrase}</b>  tag.
+Words in a phrase query must appear in document in the order entered, with no
+intervening words.</p>
+<p>The following expressions are equivalent:</p>
+<pre><code>{phrase} big red truck {/phrase}
+
+&quot;big red truck&quot;</code></pre>
+<p>When the phrase tag is used, the sequence and position of the words are
+significant in determining whether a document matches the query. The <b>{phrase}</b>
+and <b>{freetext}</b> tags are mutually exclusive and cannot be embedded or
+nested. Phrase queries can be used to search both contents and property values.</p>
+<p>The following table provides examples of the long and short forms of the
+phrase tags.</p>
+<table>
+  <tbody>
+    <tr>
+      <th>Long form</th>
+      <th>Short form</th>
+    </tr>
+    <tr>
+      <td>{phrase} big red truck {/phrase}&nbsp;</td>
+      <td>&quot;big red truck&quot;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<p class="note">&nbsp;Note</p>
+<ul>
+  <li>In phrase queries, words on the exception list are treated as place
+    holders. For example, if you searched for &quot;Word for Windows&quot;, the
+    results could give you &quot;Word for Windows&quot; and &quot;Word and
+    Windows&quot;, because &quot;for&quot; appears in the exception list.</li>
+</ul>
+
+</body>
+
+</html>

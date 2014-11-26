@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Vector</title>
+</head>
+
+<body>
+
+<h1 align="center"><u>Vector-space queries</u></h1>
+<p>Vector-space queries return documents that match a list of words and phrases.
+Documents returned by vector-space queries do not necessarily match every term
+in the query. The rank of each document indicates how well the document matched
+the query.</p>
+<p>You can assign weighting factors to control the relative importance of terms
+in the ranking of results. Weights can range from 0.0 to 1.0. For example, in
+the vector-space query <b>light, bulb</b>, both terms have equal weight in the
+ranking of results. In the query: <b>{weight value=.3} light, {weight value=.1}
+bulb,<br>
+{weight value=.6} light bulb</b>, the term &quot;light&quot; is three times more
+important than the term &quot;bulb,&quot; and the phrase &quot;light bulb&quot;
+is twice as important as the term &quot;light.&quot; If no weight is specified,
+Indexing Service uses a weight of 1.0 by default. For more information about
+term weighting, see <a href="termweighting.html" id="specLoc">Term weighting</a>.</p>
+<p>The following table shows examples of vector queries.</p>
+<table>
+  <tbody>
+    <tr>
+      <th bgcolor="#000080"><font color="#FFFFFF">To search for</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Example</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Result</font></th>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">Documents that contain specific words</td>
+      <td bgcolor="#EAEAEA"><b>light, bulb</b></td>
+      <td bgcolor="#EAEAEA">Documents with one or both of the words you are
+        searching for. Documents containing both words are ranked higher than
+        those containing only one.</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">Documents that contain prefixes, words, and phrases</td>
+      <td bgcolor="#EAEAEA"><b>invent*, {weight value=.3} light, {weight
+        value=.1} bulb, {weight value=.6} &quot;light bulb&quot;</b></td>
+      <td bgcolor="#EAEAEA">Documents that contain words prefixed by
+        &quot;invent,&quot; the words &quot;light,&quot; &quot;bulb,&quot; and
+        the phrase &quot;light bulb.&quot; Documents that contain the word
+        &quot;light&quot; are ranked higher than those that contain the word
+        &quot;bulb,&quot; but lower than those that contain the phrase
+        &quot;light bulb.&quot;</td>
+    </tr>
+  </tbody>
+</table>
+<p>Following is an example of a long-form vector-space query:</p>
+<p class="indent2"><b>{vector RankMethod = max} {ve} {weight value=.250}class {ve}
+{weight value=.500}occurrence {ve} {weight value=1.000}cursor {/vector}</b></p>
+<p>There is no short form for a vector-space query.</p>
+<p>The <i>RankMethod</i> parameter specifies the ranking algorithm Indexing
+Service uses to evaluate the rank of a query match. A query vector specification
+must be closed with the <b>{/vector}</b> tag.</p>
+<p>The <b>{ve}</b> (vector element) tag means that the following query
+specification is an element of the vector query. All the text following the <b>{ve}</b>
+tag up to the next <b>{ve}</b> tag is interpreted as a query. There is no
+closing tag for <b>{ve}</b>.</p>
+<p>Example:</p>
+<p class="indent2"><b>{vector RankMethod = &quot;Jaccard&quot;} {ve} {weight
+value=0.200} @contents CONTAINS &quot;printers&quot; OR {coerce} &quot;print
+driver&quot; {ve} {prop name=DocTitle} {freetext} Hewlett Packard HP laser jet
+printer{/freetext}{/prop} {ve} @contents hang** {/vector}.</b></p>
+<ul>
+  <li><a href="termweighting.html" id="specLoc">Term weighting</a></li>
+</ul>
+
+</body>
+
+</html>

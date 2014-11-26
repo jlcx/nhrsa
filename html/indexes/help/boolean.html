@@ -1,0 +1,140 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Boolean operators</title>
+</head>
+
+<body>
+
+<h1 align="center"><u>Boolean operators</u></h1>
+<p>You can use the Boolean operators <b>AND</b>, <b>OR</b>, and <b>NOT</b> in
+both content and property queries. The Boolean operator <b>NEAR</b> can be used
+only in content queries. You can use Boolean operators in both long-form and
+short-form queries. For more information on long-form and short-form queries,
+see&nbsp;Query language forms.</p>
+<p>When you use the <b>NEAR</b> operator in a query, a document matches the
+query if the words are within 50 words of each other in the document. The closer
+together the words are, the higher the rank that is assigned to the document in
+the result set. If the words are more than 50 words apart, they are not
+considered near enough, and the document is assigned a rank of zero. The <b>NEAR</b>
+operator can be applied only to words or phrases.</p>
+<p>In content queries, use the <b>NOT</b> operator only after the <b>AND</b>
+operator. Use the <b>NOT</b> operator only to exclude documents that match a
+previous content restriction. For property-value queries, the <b>NOT</b>
+operator can be used apart from the <b>AND</b> operator.</p>
+<p>The following table explains the Boolean operators and their associated
+symbols.</p>
+<table>
+  <tbody>
+    <tr>
+      <th bgcolor="#000080"><font color="#FFFFFF">Operator</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Long form</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Short form</font></th>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA"><b>AND</b></td>
+      <td bgcolor="#EAEAEA"><b>AND</b></td>
+      <td bgcolor="#EAEAEA"><b>&amp;</b></td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA"><b>OR</b></td>
+      <td bgcolor="#EAEAEA"><b>OR</b></td>
+      <td bgcolor="#EAEAEA"><b>|</b></td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA"><b>NOT</b></td>
+      <td bgcolor="#EAEAEA"><b>AND NOT</b></td>
+      <td bgcolor="#EAEAEA"><b>&amp;!</b></td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA"><b>NEAR</b></td>
+      <td bgcolor="#EAEAEA"><b>NEAR</b></td>
+      <td bgcolor="#EAEAEA"><b>Near, ~</b></td>
+    </tr>
+  </tbody>
+</table>
+<p>Boolean operators are available only in English.</p>
+<p>The following table shows some examples of the use of Boolean operators:</p>
+<table>
+  <tbody>
+    <tr>
+      <th bgcolor="#000080"><font color="#FFFFFF">To search for</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Long form</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Short form</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Result</font></th>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">Two terms in the same document</td>
+      <td bgcolor="#EAEAEA">red and dog</td>
+      <td bgcolor="#EAEAEA">red &amp; dog</td>
+      <td bgcolor="#EAEAEA">Documents with both the words &quot;red&quot; and
+        &quot;dog&quot;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EFEFFC">Either of two terms in a document</td>
+      <td bgcolor="#EFEFFC">red or dog</td>
+      <td bgcolor="#EFEFFC">red | dog</td>
+      <td bgcolor="#EFEFFC">Documents with the words &quot;red&quot; or
+        &quot;dog&quot;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">One term without a second term</td>
+      <td bgcolor="#EAEAEA">red and not dog</td>
+      <td bgcolor="#EAEAEA">red &amp; ! dog</td>
+      <td bgcolor="#EAEAEA">Documents with the word &quot;red&quot; but not
+        &quot;dog&quot;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EFEFFC">Documents not matching a property value</td>
+      <td bgcolor="#EFEFFC">not {prop name=size} = 100</td>
+      <td bgcolor="#EFEFFC">! @size = 100</td>
+      <td bgcolor="#EFEFFC">Documents that are not 100 bytes</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">Two terms that are close together in the same
+        document</td>
+      <td bgcolor="#EAEAEA">red near dog</td>
+      <td bgcolor="#EAEAEA">red ~ dog</td>
+      <td bgcolor="#EAEAEA">Documents with the word &quot;red&quot; near the
+        word &quot;dog&quot;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EFEFFC">Either of two terms and not two other terms if they
+        are close together</td>
+      <td bgcolor="#EFEFFC">red or dog and not (black near cat)</td>
+      <td bgcolor="#EFEFFC">red | dog &amp;! (black~cat)</td>
+      <td bgcolor="#EFEFFC">Documents with the word &quot;red&quot; or
+        &quot;dog&quot; and not the words &quot;black&quot; and &quot;cat&quot;
+        if they are within 50 words of each other</td>
+    </tr>
+  </tbody>
+</table>
+<p class="note">&nbsp;Note</p>
+<ul>
+  <li>Use quotation marks around the query phrase if it contains a word that is
+    a Boolean operator. For example, &quot;horse and rider&quot; will be
+    evaluated as a phrase, not as a Boolean expression.</li>
+</ul>
+<h2>Order of precedence rules</h2>
+<p>Boolean operators are evaluated in the following order:</p>
+<ol>
+  <li><b>NOT</b>
+  <li><b>AND</b> or <b>NEAR</b>
+  <li><b>OR</b></li>
+</ol>
+<p>After precedence rules are applied, operators are processed left to right.
+You can use parentheses (<b>(&nbsp;)</b>) to override the normal precedence. For
+example, the first three queries are equivalent, but the fourth is not:</p>
+<p class="indent2"><code>a AND b OR c</code></p>
+<p class="indent2"><code>c OR a AND b</code></p>
+<p class="indent2"><code>c OR (a AND b)</code></p>
+<p class="indent2"><code>(c OR a) AND b</code></p>
+<p>In the fourth query, the <b>OR</b> operator is evaluated first because the
+expression is enclosed in parentheses.</p>
+
+</body>
+
+</html>

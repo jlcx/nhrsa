@@ -1,0 +1,57 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Contains and Equals operators</title>
+</head>
+
+<body>
+
+<h1 align="center"><u>Contains and Equals operators</u></h1>
+<p>Use the <b>CONTAINS</b> operator to search for any word or phrase within a
+particular property. If no operator is specified, the <b>CONTAINS</b> operator
+is assumed.</p>
+<p>The following queries are equivalent:</p>
+<p class="indent2"><code>@DocTitle &quot;the red dog&quot;<br>
+@DocTitle Contains &quot;the red dog&quot;</code></p>
+<p>The following table illustrates the use of the <b>CONTAINS</b> operator in
+both long and short form.</p>
+<table>
+  <tbody>
+    <tr>
+      <th bgcolor="#000080"><font color="#FFFFFF">Long form</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Short form</font></th>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">{prop name=DocTitle} Contains {phrase}the red
+        dog{/phrase}{/prop}</td>
+      <td bgcolor="#EAEAEA">@DocTitle&quot;the red dog&quot;</td>
+    </tr>
+  </tbody>
+</table>
+<p>A document whose title property value is &quot;The story of the red dog&quot;
+would satisfy both of these queries.</p>
+<p>The <b>EQUALS</b> operator specifies that the value of the property must
+exactly match the word or phrase in the query. The long form of the operator is <b>EQUALS</b>.
+The short form is the equal sign (<b>=</b>).</p>
+<p>For example:</p>
+<p class="indent2"><code>@DocTitle = &quot;the red dog&quot;</code></p>
+<p>Only a document whose <b>Title</b> property value is &quot;the red dog&quot;
+will satisfy this query. Indexing Service would not return a document with the
+title &quot;The story of the red dog&quot; because it contains words that are
+not in the query.</p>
+<p class="note">Notes</p>
+<ul>
+  <li>To search for the word &quot;contains&quot; or &quot;equals,&quot; you
+    must use quotation marks.
+  <li>In Indexing Service, the query <b>@contents&nbsp;=&nbsp;text</b> is
+    invalid.</li>
+</ul>
+<p>For more information about queries, see&nbsp;<a href="general.html" id="specLoc">General
+rules for queries</a>.</p>
+
+</body>
+
+</html>

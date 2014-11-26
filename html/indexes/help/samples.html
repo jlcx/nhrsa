@@ -1,0 +1,80 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Sample queries</title>
+</head>
+
+<body>
+
+<h1 align="center"><u>Sample queries</u></h1>
+<p>The following provides examples of queries for various purposes.</p>
+<table>
+  <tbody>
+    <tr>
+      <th bgcolor="#000080"><font color="#FFFFFF">To search for</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Long form</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Short form</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Result</font></th>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">A specific value</td>
+      <td bgcolor="#EAEAEA">{prop name=DocAuthor}= Dalal Ketan{/prop}</td>
+      <td bgcolor="#EAEAEA">@DocAuthor = Dalal Ketan</td>
+      <td bgcolor="#EAEAEA">Documents authored by Dalal Ketan</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EFEFFC">Values beginning with a prefix</td>
+      <td bgcolor="#EFEFFC">{prop name=DocAuthor} {regex}George*{/regex}{/prop}</td>
+      <td bgcolor="#EFEFFC">#DocAuthor George*</td>
+      <td bgcolor="#EFEFFC">Documents whose <b>Author</b> property begins with
+        &quot;George&quot;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">Documents with any of a set of extensions</td>
+      <td bgcolor="#EAEAEA">{prop name=filename} {regex}*.|(exe|,dll|,sys|){/regex}{/prop}</td>
+      <td bgcolor="#EAEAEA">#filename *.|(exe|,dll|,sys|)</td>
+      <td bgcolor="#EAEAEA">Files with .exe, .dll, or .sys extensions</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EFEFFC">Documents modified after a certain date and time</td>
+      <td bgcolor="#EFEFFC">{prop name=write}&gt;96/2/14 13:00:00{/prop}</td>
+      <td bgcolor="#EFEFFC">@write &gt; 96/2/14 13:00:00</td>
+      <td bgcolor="#EFEFFC">Documents modified after February 14, 1996, at 13:00
+        Coordinated Universal Time</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">Documents modified after a relative date</td>
+      <td bgcolor="#EAEAEA">{prop name=write}&gt; -1d2h{/prop}</td>
+      <td bgcolor="#EAEAEA">@write &gt; -1d2h</td>
+      <td bgcolor="#EAEAEA">Documents modified within the last 26 hours</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EFEFFC">Vectors matching a vector</td>
+      <td bgcolor="#EFEFFC">{prop name=vectorprop}={&nbsp;10, 15, 20&nbsp;}{/prop}</td>
+      <td bgcolor="#EFEFFC">@vectorprop={&nbsp;10, 15, 20&nbsp;}</td>
+      <td bgcolor="#EFEFFC">ActiveX documents with a vectorprop value of {&nbsp;10,
+        15, 20&nbsp;}</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">Vectors where each value matches a criterion</td>
+      <td bgcolor="#EAEAEA">{prop name=vectorprop}&gt;^a 15{/prop}</td>
+      <td bgcolor="#EAEAEA">@vectorprop &gt;^a 15</td>
+      <td bgcolor="#EAEAEA">ActiveX documents with a vectorprop value where all
+        values in the vector are greater than&nbsp;15</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EFEFFC">Vectors where at least one value matches a criterion</td>
+      <td bgcolor="#EFEFFC">{prop name=vectorprop}=^s 15{/prop}</td>
+      <td bgcolor="#EFEFFC">@vectorprop =^s 15</td>
+      <td bgcolor="#EFEFFC">ActiveX documents with a vectorprop value where at
+        least one value is&nbsp;15</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+
+</html>

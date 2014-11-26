@@ -1,0 +1,59 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Wildcards</title>
+</head>
+
+<body>
+
+<h1 align="center"><u>Wildcards</u></h1>
+<p>The simplest kind of pattern query uses a word or word fragment with a
+wildcard character. You can use the asterisk (<b>*</b>) and question mark (<b>?</b>)
+as wildcard characters in queries. The asterisk matches any sequence of
+characters, and the question mark matches any single character.</p>
+<p>For example, the query <b>esc*</b> matches the terms &quot;escarpment&quot;,
+&quot;escape&quot;, and so on. The query <b>r?n</b> matches &quot;run&quot; and
+&quot;ran&quot;, but not &quot;ruin&quot;.</p>
+<p>In Indexing Service, the equal sign (<b>=</b>) indicates that wildcard
+characters can be used. If no equal sign is used, Indexing Service uses the <b>Contains</b>
+operator by default.</p>
+<p>The following table provides examples of the long- and short-form wildcard
+queries:</p>
+<table>
+  <tbody>
+    <tr>
+      <th bgcolor="#000080"><font color="#FFFFFF">Short form</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Long form</font></th>
+      <th bgcolor="#000080"><font color="#FFFFFF">Result</font></th>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">@filename=*.doc</td>
+      <td bgcolor="#EAEAEA">{prop name=filename}=*.doc{/prop}
+        <p>{prop name=filename}{regex}=*.doc{/regex}{/prop}</p>
+      </td>
+      <td bgcolor="#EAEAEA">Any file created with a word-processing program
+        (these have the .doc extension)</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EFEFFC">@filename=readme.*</td>
+      <td bgcolor="#EFEFFC">{prop name=filename}=readme.*{/prop}
+        <p>{prop name=filename}{regex}=readme.*{/regex}{/prop}</p>
+      </td>
+      <td bgcolor="#EFEFFC">readme.file, readme.</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EAEAEA">@filename=readme.???</td>
+      <td bgcolor="#EAEAEA">{prop name=filename}=readme.???{/prop}
+        <p>{prop name=filename}{regex}=readme.???{/regex}{/prop}</p>
+      </td>
+      <td bgcolor="#EAEAEA">readme.doc, readme.txt</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+
+</html>
