@@ -1,0 +1,29 @@
+<html>
+
+<head>
+
+<title>New Hampshire General Court</title>
+</head>
+
+<body>
+
+<h1 align="center"><u>Term weighting</u></h1>
+<p>You can weight query terms for relative importance by using the <b>{weight}</b>
+tag to affect the ranking of results. This tag appears before the query term and
+has no closing tag.</p>
+<p class="indent2"><b>{weight value = n} query term</b></p>
+<p>The <b>value</b> parameter specifies the relative weight assigned to the
+query term. This value can range from 0.0 to&nbsp;1.0.</p>
+<p>Consider the following query with weighting.</p>
+<p class="indent2"><b>{weight value=.250}dog AND {weight value=.500}cat AND
+{weight value=1.000}pig</b></p>
+<p>Documents that contain the word &quot;pig&quot; would be ranked higher than
+those that contain the word &quot;cat,&quot; which, in turn, would be ranked
+higher than those that contain the word &quot;dog.&quot;</p>
+<p>If you do not specify a weight, Indexing Service uses 1.0 by default. There
+is no short-form expression for weighting and no close tag is specified or
+required.</p>
+
+</body>
+
+</html>
