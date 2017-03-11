@@ -18,12 +18,12 @@ a:hover	{text-decoration : underlined; color:red}
   </font><font size="7">Revised Statutes Onli</font></font><font color="#FFFFFF" size="7">ne</font></b></td>
   </tr>
   <tr>
-    <td width="100%" align="right" colspan="2" bgcolor="#CEDBCE"><a href="/rsa/html/indexes/default.html" tabindex="12">RSA
+    <td width="100%" align="right" colspan="2" bgcolor="#CEDBCE"><a href="../indexes/default.html" tabindex="12">RSA
       Home</a>&nbsp; | <a href="http://www.gencourt.state.nh.us" tabindex="13">General Court
       Home</a>&nbsp;</td>
   </tr>
 </table>
-<form id="frminput" method="post" action="lsaresults.asp?sessionyear=2003">
+<form id="frminput" method="post" action="http://gencourt.state.nh.us/rsa/html/lsa/lsaresults.asp?sessionyear=2003">
 <div align="center">
   <center>
   
